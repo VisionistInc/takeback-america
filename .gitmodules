@@ -1,0 +1,3 @@
+[submodule "HHS-UI"]
+	path = HHS-UI
+	url = git@dev.visionistinc.com:data_science/HHS-UI.git

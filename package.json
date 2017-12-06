@@ -1,0 +1,18 @@
+{
+  "name": "hhs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --allow-restart -n \"[{name}]\" -n \"UI\" -c \"bgBlue.bold\" \"npm start --prefix HHS-UI/\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@dev.visionistinc.com:data_science/HHS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^3.5.1"
+  }
+}
