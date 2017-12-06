@@ -61,5 +61,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# empty etc folder from concurrently/npm path
+etc
 
 # End of https://www.gitignore.io/api/node
