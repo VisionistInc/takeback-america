@@ -1,3 +1,6 @@
 [submodule "HHS-UI"]
 	path = HHS-UI
 	url = git@dev.visionistinc.com:data_science/HHS-UI.git
+[submodule "HHS-API"]
+	path = HHS-API
+	url = git@dev.visionistinc.com:data_science/HHS-API.git

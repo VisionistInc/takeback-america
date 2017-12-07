@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --allow-restart -n \"[{name}]\" -n \"UI\" -c \"bgBlue.bold\" \"npm start --prefix HHS-UI/\""
+    "start":
+      "concurrently --allow-restart -n \"[{name}]\" -n \"API,UI\" -c \"bgBlue.bold,bgGreen.bold\" \"npm start --prefix HHS-API/\" \"npm start --prefix HHS-UI/\""
   },
   "repository": {
     "type": "git",
