@@ -4,6 +4,3 @@
 [submodule "HHS-API"]
 	path = HHS-API
 	url = git@dev.visionistinc.com:data_science/HHS-API.git
-[submodule "HHS-Theme"]
-	path = HHS-Theme
-	url = git@dev.visionistinc.com:data_science/HHS-Theme.git
