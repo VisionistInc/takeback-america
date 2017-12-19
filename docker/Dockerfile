@@ -13,7 +13,6 @@ COPY ../package.json /app/package.json
 COPY ../package_lock.json /app/package_lock.json
 COPY ../node_modules /app/node_modules
 COPY ../HHS-API /app/HHS-API
-COPY ../HHS-Theme /app/HHS-Theme
 COPY ../HHS-UI /app/HHS-UI
 
 # copy startup script into container
@@ -24,4 +23,3 @@ EXPOSE 80
 
 # launch startup script
 CMD /run.sh
-
