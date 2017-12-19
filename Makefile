@@ -27,7 +27,7 @@ docker-build:
 	@echo "** Building $(DOCKER_IMAGE)..."
 	@echo
 	cd HHS-UI && npm run build && cd ..
-	docker build -t $(DOCKER_IMAGE) .
+	docker build -t $(DOCKER_IMAGE) -f ./docker/Dockerfile .
 
 docker-copy:
 	@echo
