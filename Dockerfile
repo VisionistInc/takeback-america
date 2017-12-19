@@ -5,6 +5,9 @@ WORKDIR /app
 RUN apk update
 RUN apk add nginx dumb-init
 
+# install "serve" npm module
+RUN npm install -g serve
+
 # copy nginx config into container
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 

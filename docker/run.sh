@@ -4,5 +4,5 @@
 ##
 
 /usr/sbin/nginx
-cd /app && exec npm run start
+cd /app && exec npm run start-prod
 
