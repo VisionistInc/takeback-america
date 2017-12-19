@@ -39,7 +39,7 @@ docker-deploy:
 	@echo 
 	@echo "** Launching takeback:latest on $(EC2_DEST)..."
 	@echo 
-	ssh $(EC2_DEST) "docker ps -aq | xargs docker rm -f 2> /dev/null; docker images -aq | xargs docker rmi -f 2> /dev/null; docker run -d -p 80:80 --log-opt max-file=2 --log-opt max-size=100m --restart=unless-stopped $(DOCKER_IMAGE)"
+	ssh $(EC2_DEST) "docker ps -aq | xargs docker rm -f 2> /dev/null; docker run -d -p 80:80 --log-opt max-file=2 --log-opt max-size=100m --restart=unless-stopped $(DOCKER_IMAGE)"
 
 docker-all: docker-build docker-copy docker-deploy
 
