@@ -13,7 +13,6 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # copy node app into container
 COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
 COPY node_modules /app/node_modules
 COPY HHS-API /app/HHS-API
 COPY HHS-UI /app/HHS-UI
