@@ -1,12 +1,8 @@
-SUBMODULES = '.' 'HHS-API' 'HHS-UI'
+SUBMODULES = '.' 'api' 'ui'
 EC2_DEST = ubuntu@takeback.labs.visionistinc.com
 DOCKER_IMAGE = takeback
 
-.PHONY: all init deps docker docker-run compile run
-
-init:
-	git submodule init
-	git submodule update
+.PHONY: all deps docker docker-run compile run
 
 deps:
 	@- $(foreach S, $(SUBMODULES), \
@@ -26,7 +22,7 @@ docker-build:
 	@echo
 	@echo "** Building $(DOCKER_IMAGE)..."
 	@echo
-	cd HHS-UI && npm run build && cd ..
+	cd ui && npm run build && cd ..
 	docker build -t $(DOCKER_IMAGE) -f ./docker/Dockerfile .
 
 docker-copy:

@@ -14,8 +14,8 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 # copy node app into container
 COPY package.json /app/package.json
 COPY node_modules /app/node_modules
-COPY HHS-API /app/HHS-API
-COPY HHS-UI /app/HHS-UI
+COPY api /app/api
+COPY ui /app/ui
 
 # copy startup script into container
 COPY docker/run.sh /app/run.sh

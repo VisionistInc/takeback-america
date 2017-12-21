@@ -1,0 +1,411 @@
+/* CSS reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove CSS reset for lists */
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+ul ul,
+ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+ol ol,
+ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+
+/* take-back */
+* {
+  font-family: 'Cardo', serif;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#header {
+  display: flex;
+  flex-wrap: wrap;
+  background: #cfdbf0;
+  background: linear-gradient(to bottom, #cfdbf0 0%, #eef3fa 100%);
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+#header-logo-takeback {
+  display: flex;
+  justify-content: left;
+  flex: 1;
+  margin: -4px 20px 0 33px;
+  max-width: 135px;
+  align-items: center;
+}
+
+#header-text {
+  flex: 4;
+  margin: 16px 25px 5px 0;
+  font-size: 15pt;
+  line-height: 16pt;
+}
+
+#header-text h1 {
+  font-size: 18pt;
+  line-height: 18pt;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#header-text h1 > em {
+  font-style: italic;
+  display: block;
+}
+
+#header-text > div {
+  margin-bottom: 12px;
+}
+
+#header-text > div > input {
+  border-radius: 10px;
+  border: 1px solid #2e3192;
+  font-size: 14pt;
+  width: 160px;
+  margin-left: 10px;
+  padding: 3px 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+#header-about {
+  flex: 2;
+  margin: 10px;
+  font-size: 12pt;
+  line-height: 12pt;
+  font-style: italic;
+  max-width: 354px;
+}
+
+#header-about img {
+  margin: 0 10px 3px 0;
+  border: none;
+}
+
+#header-about-links {
+  font-style: normal;
+  margin-top: 10px;
+}
+
+#header-about-links a {
+  margin-right: 10px;
+  font-style: normal;
+}
+
+#map {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+#info {
+  position: absolute;
+  left: 30px;
+  top: 350px;
+  width: 380px;
+  min-height: 610px;
+  border: 1px solid #444;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 150;
+  padding: 20px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+#info span {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 87%;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+#info h1 {
+  font-size: 27pt;
+  line-height: 22pt;
+  margin-bottom: 10px;
+}
+
+#info h2 {
+  font-size: 21pt;
+}
+
+#info h2 span {
+  color: white;
+}
+
+#info h2.red {
+  color: #ac2024;
+}
+
+#info h2.red span {
+  background-color: #ac2024;
+}
+
+#info h2.orange {
+  color: #c2591d;
+}
+
+#info h2.orange span {
+  background-color: #c2591d;
+}
+
+#info h2.green {
+  color: #007a12;
+}
+
+#info h2.green span {
+  background-color: #007a12;
+}
+
+#info h3 {
+  font-size: 15pt;
+  margin: 15px 0 10px 1px;
+  font-weight: bold;
+}
+
+#info h4 {
+  font-size: 16pt;
+  margin: 14px 0 1px 1px;
+}
+
+#info h4 span {
+  border: 1px solid black;
+  font-size: 16.5pt;
+  padding: 2px 6px;
+}
+
+#info em {
+  font-size: 12pt;
+  font-style: italic;
+}
+
+#info-options {
+  margin: 5px 0 5px -4px;
+}
+
+#info-options input {
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+}
+
+#info-options label {
+  font-size: 15pt;
+  cursor: pointer;
+}
+
+#welcome {
+  position: absolute;
+  left: 30px;
+  top: 350px;
+  width: 380px;
+  min-height: 610px;
+  border: 1px solid #444;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 150;
+  padding: 20px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+#welcome h3 {
+  font-size: 23px;
+  margin: 15px 0 10px 1px;
+  font-weight: bold;
+}
+
+#welcome ol {
+  margin-left: 20px;
+}
+
+#welcome li {
+  margin-top: 8px;
+}
+
+.welcome-paragraph {
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.welcome-desc {
+  line-height: 20px;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.invalid-zip {
+  margin-left: 5px;
+  color: #ac2024;
+  font-size: 14px;
+}
+
