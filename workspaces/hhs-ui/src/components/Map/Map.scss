@@ -1,0 +1,15 @@
+.Title {
+  font-weight: bold;
+}
+
+.Map {
+  composes: flex-stretch from "../../scss/flex.scss";
+  flex: 1;
+}
+
+:global {
+  .leaflet-container {
+    flex: 1;
+    outline: none;
+  }
+}

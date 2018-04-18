@@ -1,0 +1,14 @@
+@import "../../scss/palette.scss";
+
+.InfoPanel {
+  position: absolute;
+  height: 700px;
+  width: 450px;
+  margin-top: 65px;
+  margin-left: 50px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 25px;
+  box-sizing: border-box;
+  background: $color-white;
+  z-index: 999;
+}

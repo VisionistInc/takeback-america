@@ -1,0 +1,21 @@
+{
+  "name": "hhs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@dev.visionistinc.com:data_science/HHS.git"
+  },
+  "scripts": {
+    "start": "yarn lerna run start --stream --parallel",
+    "lerna": "lerna"
+  },
+  "dependencies": {
+    "lerna": "^2.10.2"
+  },
+  "workspaces": ["workspaces/*"]
+}
