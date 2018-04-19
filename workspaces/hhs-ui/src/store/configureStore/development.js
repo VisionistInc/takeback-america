@@ -6,6 +6,4 @@ if (module.hot) {
   );
 }
 
-export { persistor } from "./production";
-
 export default store;

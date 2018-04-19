@@ -10,8 +10,6 @@ import {
 } from "react-leaflet";
 import styles from "./Map.scss";
 
-// add geojson style prop/callback
-
 const Map = ({
   accessToken,
   center,

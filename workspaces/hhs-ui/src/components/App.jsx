@@ -24,7 +24,7 @@ export default class App extends Component {
 
       this.setState(() => ({ zipcodeToLatLngMap }));
     } catch (err) {
-      console.log("Error:", err);
+      console.error("Error:", err);
     }
   }
 
@@ -88,30 +88,17 @@ export default class App extends Component {
     this.setState({ zoom, zoomTakeBackFilter: zoom >= 11 });
 
   render() {
-    const {
-      center,
-      markerLatLng,
-      zoom,
-      takeBackFilter,
-      zoomTakeBackFilter
-    } = this.state;
-
     return (
       <div className={styles.App}>
         <div className={styles.Header} />
         <div className={styles.Bumper}>
           <InfoPanel />
           <Map
-            center={center}
-            markerLatLng={markerLatLng}
-            zoom={zoom}
-            takeBackFilter={takeBackFilter}
             onCountyClick={this.onCountyClick}
             onCountyMouseOut={this.onCountyMouseOut}
             setGeoJsonLayerRef={this.setGeoJsonLayerRef}
             onZoomChange={this.onZoomChange}
             onMove={this.debouncedOnMove}
-            zoomTakeBackFilter={zoomTakeBackFilter}
           />
         </div>
         <div className={styles.Footer} />
