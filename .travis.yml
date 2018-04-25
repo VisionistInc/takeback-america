@@ -1,14 +1,19 @@
-language: node
-node_js:
-  - "node"
+sudo: false
+language: node_js
 cache:
-  yarn: true
   directories:
     - node_modules
-before_script:
-  - npm install -g yarn
+notifications:
+  email: false
+node_js:
+  - node
+  - '7'
+  - '6'
 script:
+  - yarn build
+after_success:
   - make docker-all
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
