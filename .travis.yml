@@ -5,6 +5,8 @@ cache:
     - node_modules
 notifications:
   email: false
+before_script:
+  - yarn
 script:
   - make docker-all
 node_js:
