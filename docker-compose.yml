@@ -1,0 +1,9 @@
+version: '3'
+services:
+  takeback-america:
+    image: "takeback-america"
+    build: "."
+    ports:
+      - "10080:3003"
+
+

@@ -20,6 +20,10 @@ dir.files(apiPath, (err, files) => {
   files.forEach(filePath => require(filePath)(apiRouter));
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname, "..", "..", "public")));
+}
+
 app.use("/api", apiRouter);
 /* End API Routes */
 

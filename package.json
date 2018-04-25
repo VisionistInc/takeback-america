@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "yarn lerna run start --stream --parallel",
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "build": "yarn lerna run build --scope hhs-ui"
   },
   "dependencies": {
     "lerna": "^2.10.2"

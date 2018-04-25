@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { debounce } from "lodash";
 import Map from "./Map";
@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import isValidZipcode from "../utils/validZipcode";
 import styles from "./App.scss";
 
-export default class App extends Component {
+export default class App extends PureComponent {
   static childContextTypes = {
     getGeoJsonLayerRef: PropTypes.func
   };

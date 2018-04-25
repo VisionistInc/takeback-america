@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start:prod": "NODE_ENV=production yarn start"
   },
   "author": "",
   "license": "ISC",
