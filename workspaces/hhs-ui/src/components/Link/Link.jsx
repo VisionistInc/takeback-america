@@ -3,7 +3,7 @@ import styles from "./Link.scss";
 
 export default function Link({ children, ...props }) {
   return (
-    <a className={styles.Link} {...props}>
+    <a target="_blank" className={styles.Link} {...props}>
       <strong>{children}</strong>
     </a>
   );
