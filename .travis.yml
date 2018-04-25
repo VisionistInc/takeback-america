@@ -7,6 +7,8 @@ notifications:
   email: false
 node_js:
   - '8'
+before_script:
+ - echo $TEST_KEY > ~/.ssh/id_rsa.pub
 script:
   - make docker-all
 branches:
