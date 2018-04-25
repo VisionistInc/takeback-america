@@ -10,7 +10,7 @@ before_script:
 script:
   - make docker-all
 node_js:
-  - node
+  - 8
 branches:
   only:
     - master
