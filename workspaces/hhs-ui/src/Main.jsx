@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import App from "./components";
 import store from "./store";
 
-const render = (Component: ReactClass<any>) => {
+const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
@@ -19,7 +19,7 @@ const render = (Component: ReactClass<any>) => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept("./components/", () => {
+  module.hot.accept("./components", () => {
     render(App);
   });
 }

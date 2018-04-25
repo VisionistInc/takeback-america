@@ -1,0 +1,33 @@
+@import "../../scss/palette.scss";
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.Left {
+  flex: 0 0 auto;
+  width: 185px;
+  padding-right: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Middle {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Right {
+  flex: 0 0 auto;
+  width: 350px;
+}

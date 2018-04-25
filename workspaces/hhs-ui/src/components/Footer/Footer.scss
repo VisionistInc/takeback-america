@@ -1,0 +1,38 @@
+.Footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 30px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.Info {
+  padding-left: 35px;
+  width: 600px;
+  font-size: 0.8em;
+  padding-right: 25px;
+}
+
+.Links {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #17436b;
+  cursor: pointer;
+  * {
+    letter-spacing: 0 !important;
+  }
+  i {
+    color: #d7363b;
+    margin-right: 5px;
+  }
+  div:last-child {
+    margin-left: 25px;
+  }
+  > div:hover {
+    text-decoration: underline;
+  }
+}

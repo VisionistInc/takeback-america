@@ -1,0 +1,77 @@
+@import "../../../scss/palette.scss";
+
+.Dropdown {
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  background: #d7363b;
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    background: #c5282c;
+  }
+
+  > div {
+    margin-left: -20px;
+    display: flex;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.DropdownTitle {
+  font-size: 1.145em;
+  font-weight: bold;
+}
+
+.DropdownSubtitle {
+  font-style: italic;
+  font-size: 0.785em;
+}
+
+.DropdownChevron {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55em;
+  margin-left: 10px;
+}
+
+.DropdownMenu {
+  height: auto;
+  width: 350px;
+  position: absolute;
+  right: 0;
+  top: 110;
+  background: $color-white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px 10px;
+  box-sizing: border-box;
+
+  > div:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.Field {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+
+  * {
+    letter-spacing: 0;
+  }
+
+  &:hover {
+    background: #e3f2ff;
+  }
+}

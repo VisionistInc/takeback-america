@@ -1,37 +1,33 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { debounce } from "lodash";
 import Map from "./Map";
 import InfoPanel from "./InfoPanel";
-import styles from "./App.scss";
+import Header from "./Header";
+import Footer from "./Footer";
 import isValidZipcode from "../utils/validZipcode";
+import styles from "./App.scss";
 
 export default class App extends Component {
-  state = {
-    activeCounty: {},
-    center: [39.8283, -98.5795],
-    zoom: 4,
-    zipcodeToLatLngMap: {},
-    validZipcode: true,
-    takeBackFilter: false,
-    zoomTakeBackFilter: false
+  static childContextTypes = {
+    getGeoJsonLayerRef: PropTypes.func
   };
 
-  async componentDidMount() {
-    try {
-      const zipcodeToLatLngMap = await fetch("/api/lat_lng/zipcode").then(res =>
-        res.json()
-      );
-
-      this.setState(() => ({ zipcodeToLatLngMap }));
-    } catch (err) {
-      console.error("Error:", err);
-    }
+  getChildContext() {
+    return { getGeoJsonLayerRef: this.getGeoJsonLayerRef };
   }
 
-  extractLayerFromGeoJson = latLng =>
-    this.countiesGeoJson.leafletElement
-      .getLayers()
-      .find(layer => layer.getBounds().contains(latLng));
+  state = {
+    activeCounty: {},
+    zipcodeToLatLngMap: {},
+    validZipcode: true,
+    showHeader: false
+  };
+
+  componentDidMount() {
+    const { populateZipCodeMap } = this.props;
+    populateZipCodeMap();
+  }
 
   searchZipCode = e => {
     const { key, target } = e;
@@ -57,10 +53,6 @@ export default class App extends Component {
   validateZipcode = zipcode =>
     this.setState(() => ({ validZipcode: isValidZipcode(zipcode) }));
 
-  onMove = ({ target }) => this.setState({ center: target.getCenter() });
-
-  debouncedOnMove = debounce(this.onMove, 250);
-
   debouncedValidateZipcode = debounce(this.validateZipcode, 250);
 
   toggleTakeBackfilter = () =>
@@ -68,40 +60,44 @@ export default class App extends Component {
       takeBackFilter: !takeBackFilter
     }));
 
-  onCountyClick = ({ target }) => {
-    this.setState(() => ({
-      activeCounty: { ...target.feature.properties },
-      markerLatLng: target.getCenter()
-    }));
-  };
-
   onCountyMouseOut = e => {
     const layer = e.target;
     this.countiesGeoJson.leafletElement.resetStyle(layer);
   };
 
+  getGeoJsonLayerRef = () => this.countiesGeoJson;
+
   setGeoJsonLayerRef = ref => {
     this.countiesGeoJson = ref;
   };
 
-  onZoomChange = zoom =>
-    this.setState({ zoom, zoomTakeBackFilter: zoom >= 11 });
+  extractLayerFromGeoJson = latLng =>
+    this.countiesGeoJson.leafletElement
+      .getLayers()
+      .find(layer => layer.getBounds().contains(latLng));
+
+  toggleHeader = () => this.setState({ showHeader: !this.state.showHeader });
 
   render() {
+    const { showHeader } = this.props;
     return (
       <div className={styles.App}>
-        <div className={styles.Header} />
+        {showHeader && (
+          <div className={styles.Header}>
+            <Header />
+          </div>
+        )}
         <div className={styles.Bumper}>
           <InfoPanel />
           <Map
-            onCountyClick={this.onCountyClick}
+            {...this.state}
             onCountyMouseOut={this.onCountyMouseOut}
             setGeoJsonLayerRef={this.setGeoJsonLayerRef}
-            onZoomChange={this.onZoomChange}
-            onMove={this.debouncedOnMove}
           />
         </div>
-        <div className={styles.Footer} />
+        <div className={styles.Footer}>
+          <Footer />
+        </div>
       </div>
     );
   }

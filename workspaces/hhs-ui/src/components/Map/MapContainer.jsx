@@ -1,9 +1,7 @@
-import { connect } from "react-redux";
-import { fetchCountiesAndDropMarkers } from "../../reducers/map";
 import React, { PureComponent } from "react";
 import Map from "./Map";
 
-class MapContainer extends PureComponent {
+export default class MapContainer extends PureComponent {
   componentDidMount() {
     const { fetchCountiesAndDropMarkers } = this.props;
     fetchCountiesAndDropMarkers();
@@ -77,8 +75,3 @@ class MapContainer extends PureComponent {
     );
   }
 }
-
-const mapStateToProps = ({ map }) => ({ ...map });
-const dispatchProps = { fetchCountiesAndDropMarkers };
-
-export default connect(mapStateToProps, dispatchProps)(MapContainer);

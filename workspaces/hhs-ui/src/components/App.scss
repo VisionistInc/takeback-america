@@ -11,6 +11,7 @@
 
   * {
     font-family: "Noto Sans", sans-serif;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -24,8 +25,8 @@
 
 .Header {
   flex: 0 0 auto;
-  height: 125px;
-  box-shadow: 0px 11px 8px -9px $color-grey-400;
+  height: 110px;
+  box-shadow: 0px 11px 8px -9px rgba(0, 0, 0, 0.27058823529411763);
   z-index: 1;
 }
 
@@ -38,7 +39,7 @@
 
 .Footer {
   flex: 0 0 auto;
-  height: 110px;
-  box-shadow: 0px -11px 8px -10px $color-grey-400;
+  height: 90px;
+  box-shadow: 0px -11px 8px -9px rgba(0, 0, 0, 0.27058823529411763);
   z-index: 1;
 }

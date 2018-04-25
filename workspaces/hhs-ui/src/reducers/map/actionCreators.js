@@ -2,10 +2,15 @@ import isValidZipcode from "../../utils/validZipcode";
 import {
   ON_COUNTY_CLICK,
   ON_ZOOM_CHANGE,
+  ON_MOVE,
   FETCH_COUNTIES_AND_DROP_MARKERS,
   VALIDATE_ZIP_CODE,
-  SEARCH_ZIP_CODE
+  SEARCH_ZIP_CODE,
+  POPULATE_ZIP_CODE_MAP,
+  SET_INPUT_VALUE
 } from "./actions";
+
+export let geoJsonLayer = null;
 
 export const fetchCountiesAndDropMarkers = () => async dispatch => {
   try {
@@ -40,6 +45,13 @@ export const onZoomChange = zoom => {
   };
 };
 
+export const onMove = ({ target }) => {
+  return {
+    type: ON_MOVE,
+    center: target.getCenter()
+  };
+};
+
 export const validateZipCode = zipcode => {
   return {
     type: VALIDATE_ZIP_CODE,
@@ -47,24 +59,34 @@ export const validateZipCode = zipcode => {
   };
 };
 
-export const searchZipCode = e => (dispatch, getState) => {
-  const { key, target } = e;
-  const { value: zipcode } = target;
-  const { zipcodeToLatLngMap } = getState();
+export const setInputValue = inputValue => {
+  return {
+    type: SET_INPUT_VALUE,
+    inputValue
+  };
+};
 
-  // [lat, lng]
-  const center = zipcodeToLatLngMap[zipcode] || [];
+export const searchZipCode = ({ activeCounty, markerLatLng, center, zoom }) => {
+  return {
+    type: SEARCH_ZIP_CODE,
+    activeCounty,
+    markerLatLng,
+    center,
+    zoom
+  };
+};
 
-  if (key === "Enter" && center.length === 2 && isValidZipcode(zipcode)) {
-    const geoJsonLayer = this.extractLayerFromGeoJson(center);
-    const activeCounty = geoJsonLayer.feature.properties;
-
+export const populateZipCodeMap = () => async dispatch => {
+  try {
+    const zipcodeToLatLngMap = await fetch("/api/lat_lng/zipcode").then(res =>
+      res.json()
+    );
     return dispatch({
-      type: SEARCH_ZIP_CODE,
-      activeCounty,
-      markerLatLng: geoJsonLayer.getCenter(),
-      center,
-      zoom: 11
+      type: POPULATE_ZIP_CODE_MAP,
+      zipcodeToLatLngMap
     });
+  } catch (err) {
+    console.error("Error:", err);
+    return Promise.resolve();
   }
 };
