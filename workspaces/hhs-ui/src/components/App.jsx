@@ -82,11 +82,9 @@ export default class App extends PureComponent {
     const { showHeader } = this.props;
     return (
       <div className={styles.App}>
-        {showHeader && (
-          <div className={styles.Header}>
-            <Header />
-          </div>
-        )}
+        <div className={styles.Header} style={{ height: showHeader ? 110 : 0 }}>
+          {showHeader && <Header />}
+        </div>
         <div className={styles.Bumper}>
           <InfoPanel />
           <Map

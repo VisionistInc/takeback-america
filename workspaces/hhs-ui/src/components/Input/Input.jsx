@@ -4,9 +4,16 @@ import isValidZipcode from "../../utils/validZipcode";
 import styles from "./Input.scss";
 
 export default class Input extends PureComponent {
+  state = {
+    inputValue: ""
+  };
   static contextTypes = {
     getGeoJsonLayerRef: PropTypes.func
   };
+  componentDidMount() {
+    const { inputValue } = this.props;
+    this.setState({ inputValue });
+  }
   extractLayerFromGeoJson = latLng => {
     const { getGeoJsonLayerRef } = this.context;
     const countiesGeoJson = getGeoJsonLayerRef();
@@ -18,6 +25,7 @@ export default class Input extends PureComponent {
     const { key, target } = e;
     const { value: zipcode } = target;
     const { searchZipCode, zipcodeToLatLngMap } = this.props;
+    const { inputValue } = this.state;
 
     // [lat, lng]
     const center = zipcodeToLatLngMap[zipcode] || [];
@@ -28,6 +36,7 @@ export default class Input extends PureComponent {
 
       Promise.resolve(
         searchZipCode({
+          inputValue,
           activeCounty,
           markerLatLng: geoJsonLayer.getCenter(),
           center,
@@ -42,8 +51,7 @@ export default class Input extends PureComponent {
     target.setSelectionRange(0, target.value.length);
   };
   setInputValue = e => {
-    const { setInputValue } = this.props;
-    setInputValue(e.target.value);
+    this.setState({ inputValue: e.target.value });
   };
   render() {
     const {
@@ -53,6 +61,7 @@ export default class Input extends PureComponent {
       setInputValue,
       ...props
     } = this.props;
+    const { inputValue: value } = this.state;
     return (
       <div className={styles.Input} {...props}>
         <div style={{ position: "relative" }}>
@@ -63,7 +72,7 @@ export default class Input extends PureComponent {
             onKeyPress={this.searchZipCode}
             onChange={this.setInputValue}
             onFocus={this.onFocus}
-            value={inputValue}
+            value={value}
           />
           <div
             style={{

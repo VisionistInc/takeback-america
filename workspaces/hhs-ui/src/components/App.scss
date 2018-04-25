@@ -31,9 +31,10 @@
 
 .Header {
   flex: 0 0 auto;
-  height: 110px;
   box-shadow: 0px 11px 8px -9px rgba(0, 0, 0, 0.27058823529411763);
   z-index: 1;
+  overflow: hidden;
+  transition: height 1s cubic-bezier(0.77, 0, 0.02, 1);
 }
 
 .Bumper {

@@ -2,7 +2,7 @@
 
 .InfoPanel {
   position: absolute;
-  height: auto;
+  min-height: 1px;
   width: 425px;
   margin-top: 65px;
   margin-left: 40px;
@@ -13,4 +13,6 @@
   box-sizing: border-box;
   background: $color-white;
   z-index: 999;
+
+  transition: height 1s cubic-bezier(0.77, 0, 0.02, 1);
 }

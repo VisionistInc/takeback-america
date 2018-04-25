@@ -1,6 +1,7 @@
 import React from "react";
 import { round, isEmpty, startCase } from "lodash";
 import Aux from "../../../utils/Aux";
+import Link from "../../Link";
 import RiskScore from "../../RiskScore";
 import styles from "./Details.scss";
 
@@ -55,9 +56,9 @@ export default function Details({ activeCounty }) {
       calculation: round(activeCounty.Drug_Poison_Rate, 2),
       notation: () => (
         <Aux>
-          Age-adjusted death rates for drug poisoning per 100,000 population (<a href="https://www.cdc.gov/nchs/data-visualization/drug-poisoning-mortality/">
+          Age-adjusted death rates for drug poisoning per 100,000 population (<Link href="https://www.cdc.gov/nchs/data-visualization/drug-poisoning-mortality/">
             NCHS, 2015
-          </a>)
+          </Link>)
         </Aux>
       )
     },
@@ -66,9 +67,9 @@ export default function Details({ activeCounty }) {
       calculation: round(activeCounty.OpioidRX_Rate, 2),
       notation: () => (
         <Aux>
-          The estimated rate of opioid prescriptions per 100 residents (<a href="https://www.cdc.gov/drugoverdose/maps/rxrate-maps.html">
+          The estimated rate of opioid prescriptions per 100 residents (<Link href="https://www.cdc.gov/drugoverdose/maps/rxrate-maps.html">
             CDC, 2016
-          </a>)
+          </Link>)
         </Aux>
       )
     },
@@ -77,9 +78,9 @@ export default function Details({ activeCounty }) {
       calculation: round(activeCounty.Fair_Poor_Rate, 2),
       notation: () => (
         <Aux>
-          Age-adjusted percentage of adults reporting fair or poor health (<a href="http://www.countyhealthrankings.org/">
+          Age-adjusted percentage of adults reporting fair or poor health (<Link href="http://www.countyhealthrankings.org/">
             University of Wisconson, 2015
-          </a>){" "}
+          </Link>)
         </Aux>
       )
     },
@@ -97,7 +98,7 @@ export default function Details({ activeCounty }) {
 
   return (
     <div>
-      <h2>
+      <h2 style={{ marginTop: 0 }}>
         <strong>{`${activeCounty.NAME} County${
           !isEmpty(activeCounty.state)
             ? ", " + startCase(activeCounty.state.toLowerCase())

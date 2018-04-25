@@ -66,14 +66,30 @@ export const setInputValue = inputValue => {
   };
 };
 
-export const searchZipCode = ({ activeCounty, markerLatLng, center, zoom }) => {
-  return {
-    type: SEARCH_ZIP_CODE,
-    activeCounty,
-    markerLatLng,
-    center,
-    zoom
-  };
+export const searchZipCode = ({
+  inputValue,
+  activeCounty,
+  markerLatLng,
+  center,
+  zoom
+}) => dispatch => {
+  /**
+   * Mimics a fake loading spinner
+   */
+  dispatch({ type: SEARCH_ZIP_CODE, searching: true });
+  setTimeout(() => {
+    dispatch({
+      type: SEARCH_ZIP_CODE,
+      inputValue,
+      activeCounty,
+      markerLatLng,
+      center,
+      zoom,
+      searching: false
+    });
+  }, 1000);
+
+  return Promise.resolve();
 };
 
 export const populateZipCodeMap = () => async dispatch => {

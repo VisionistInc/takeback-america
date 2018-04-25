@@ -22,7 +22,8 @@ export const initialState = {
   accessToken: ACCESS_TOKEN,
   counties: [],
   dropMarkers: [],
-  fetching: true
+  fetching: true,
+  searching: false
 };
 
 export default function(state = initialState, { type, ...action }) {
