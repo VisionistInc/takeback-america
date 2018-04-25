@@ -7,10 +7,8 @@ notifications:
   email: false
 node_js:
   - node
-  - '7'
-  - '6'
 script:
-  - yarn build
+  - yarn
 after_success:
   - make docker-all
 branches:
