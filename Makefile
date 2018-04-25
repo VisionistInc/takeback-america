@@ -28,7 +28,7 @@ docker-copy:
 	@echo
 	@echo "** Uploading $(DOCKER_IMAGE) container to: $(EC2_DEST)..."
 	@echo
-	docker save $(DOCKER_IMAGE) | ssh -I $TEST_KEY -C $(EC2_DEST) docker load
+	@docker save $(DOCKER_IMAGE) | ssh -I $(TEST_KEY) -C $(EC2_DEST) docker load
 
 docker-deploy:
 	@echo
