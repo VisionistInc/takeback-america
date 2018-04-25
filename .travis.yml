@@ -1,0 +1,12 @@
+sudo: false
+language: bash
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+script:
+  - make docker-all
+branches:
+  only:
+    - master
