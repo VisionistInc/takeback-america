@@ -1,12 +1,10 @@
-sudo: false
 language: node
 node_js:
-  - "8"
+  - "node"
 cache:
+  yarn: true
   directories:
     - node_modules
-notifications:
-  email: false
 before_script:
   - npm install -g yarn
 script:
