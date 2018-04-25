@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 before_script:
-  - yarn
+  - npm install -g yarn
 script:
   - make docker-all
 node_js:
