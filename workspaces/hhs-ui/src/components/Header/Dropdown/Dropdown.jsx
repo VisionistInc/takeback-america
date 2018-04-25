@@ -36,7 +36,7 @@ export const Field = ({ title, subtitle, href }) => (
   <div
     className={styles.Field}
     onClick={() => {
-      window.location.href = href;
+      window.open(href, "_blank");
     }}
   >
     <div>
