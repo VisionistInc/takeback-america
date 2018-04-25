@@ -1,12 +1,16 @@
 import React from "react";
-import styles from "./InfoPanel.scss";
-import RiskScore from "../RiskScore";
+import Details from "./Details";
 import Welcome from "./Welcome";
+import styles from "./InfoPanel.scss";
 
-export default function InfoPanel() {
+export default function InfoPanel({ activeCounty }) {
   return (
     <div className={styles.InfoPanel}>
-      <Welcome />
+      {!!Object.keys(activeCounty).length ? (
+        <Details activeCounty={activeCounty} />
+      ) : (
+        <Welcome />
+      )}
     </div>
   );
 }

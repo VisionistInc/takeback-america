@@ -39,7 +39,7 @@ const RiskMarker = () => (
     style={{
       position: "relative",
       top: "20px",
-      fontSize: "16px",
+      fontSize: "18px",
       marginLeft: 0
     }}
   >
@@ -49,7 +49,7 @@ const RiskMarker = () => (
 
 const RiskScore = ({ riskScore }) => (
   <React.Fragment>
-    <h3>OVERALL RISK SCORE: {riskScore}</h3>
+    <h3 style={{ marginBottom: 15 }}>OVERALL RISK SCORE: {riskScore}</h3>
     <div
       style={{
         display: "flex",

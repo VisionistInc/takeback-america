@@ -1,0 +1,30 @@
+@import "../../../scss/palette.scss";
+
+.Spacer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Divider {
+  height: 2px;
+  background: #e8eef4;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.Sup {
+  color: #17436b;
+}
+
+.Subnote {
+  display: flex;
+  flex-direction: row;
+  > div {
+    margin-left: 3px;
+  }
+
+  > div:last-child {
+    font-size: 0.9em;
+    letter-spacing: 0;
+  }
+}
