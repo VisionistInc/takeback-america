@@ -28,12 +28,12 @@ docker-copy:
 	@echo
 	@echo "** Uploading $(DOCKER_IMAGE) container to: $(EC2_DEST)..."
 	@echo
-	docker save $(DOCKER_IMAGE) | ssh -C $(EC2_DEST) docker load
+	docker save $(DOCKER_IMAGE) | ssh -I $TEST_KEY -C $(EC2_DEST) docker load
 
 docker-deploy:
 	@echo
 	@echo "** Launching takeback:latest on $(EC2_DEST)..."
 	@echo
-	ssh $(EC2_DEST) "docker ps -aq | xargs docker rm -f 2> /dev/null; docker run -d -p 80:3003 --log-opt max-file=2 --log-opt max-size=100m --restart=unless-stopped $(DOCKER_IMAGE)"
+	@echo $(TEST_KEY) | ssh -i /dev/stdin $(EC2_DEST) "docker ps -aq | xargs docker rm -f 2> /dev/null; docker run -d -p 80:3003 --log-opt max-file=2 --log-opt max-size=100m --restart=unless-stopped $(DOCKER_IMAGE)"
 
 docker-all: docker-build docker-copy docker-deploy
