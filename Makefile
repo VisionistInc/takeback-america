@@ -13,7 +13,7 @@ docker-run:
 	@echo
 	@echo "** Starting $(DOCKER_IMAGE), listening on http://localhost:8000..."
 	@echo
-	docker run -p 8000:80 $(DOCKER_IMAGE)
+	docker run -p 8000:3003 $(DOCKER_IMAGE)
 
 static-assets: deps
 	yarn build

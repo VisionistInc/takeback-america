@@ -11,6 +11,12 @@ make deps
 make docker-build && make docker-run
 ```
 
+#### Using compose
+
+```
+docker-compose up
+```
+
 ### With Node:
 
 ```bash

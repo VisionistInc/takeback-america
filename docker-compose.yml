@@ -4,6 +4,6 @@ services:
     image: "takeback-america"
     build: "."
     ports:
-      - "10080:3003"
+      - "8000:3003"
 
 
