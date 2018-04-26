@@ -79,7 +79,7 @@ export default function Details({ activeCounty }) {
       notation: () => (
         <Aux>
           Age-adjusted percentage of adults reporting fair or poor health (<Link href="http://www.countyhealthrankings.org/">
-            University of Wisconson, 2015
+            University of Wisconsin, 2015
           </Link>)
         </Aux>
       )
