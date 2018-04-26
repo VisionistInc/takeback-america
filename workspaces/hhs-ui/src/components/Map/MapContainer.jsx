@@ -36,7 +36,7 @@ export default class MapContainer extends PureComponent {
     opacity: 1,
     color: "white",
     dashArray: "3",
-    fillOpacity: 0.7
+    fillOpacity: 1
   });
 
   onCountyMouseOver = e => {
