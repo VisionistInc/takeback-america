@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import { isEqual } from "lodash";
 import Map from "./Map";
 
 export default class MapContainer extends PureComponent {
