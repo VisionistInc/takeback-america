@@ -26,10 +26,10 @@ export default function Footer() {
           <i className="fas fa-chevron-circle-right" />
           <Link href="mailto:health@visionistinc.com">Contact The Team</Link>
         </div>
-        <div>
+        {/* <div>
           <i className="fas fa-chevron-circle-right" />
           What's Next?
-        </div>
+        </div> */}
       </div>
     </div>
   );
