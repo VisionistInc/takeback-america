@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { isEqual } from "lodash";
 import Map from "./Map";
 
 export default class MapContainer extends PureComponent {
@@ -30,18 +31,27 @@ export default class MapContainer extends PureComponent {
     }
   };
 
-  styleCounty = feature => ({
-    fillColor: this.getColorByRisk(feature.properties),
-    weight: 1,
-    opacity: 1,
-    color: "white",
-    dashArray: "3",
-    fillOpacity: 1
-  });
+  isActiveCounty = county => {
+    const { activeCounty } = this.props;
+    return (
+      `${county.STATE}-${county.COUNTY}` ===
+      `${activeCounty.STATE}-${activeCounty.COUNTY}`
+    );
+  };
+
+  styleCounty = feature => {
+    return {
+      fillColor: this.getColorByRisk(feature.properties),
+      weight: 1,
+      opacity: 1,
+      color: "white",
+      dashArray: "3",
+      fillOpacity: this.isActiveCounty(feature.properties) ? 0.5 : 1
+    };
+  };
 
   onCountyMouseOver = e => {
     const layer = e.target;
-
     layer.setStyle({
       weight: 3,
       fillOpacity: 0.4

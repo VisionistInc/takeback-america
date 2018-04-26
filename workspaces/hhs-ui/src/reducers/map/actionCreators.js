@@ -30,6 +30,7 @@ export const fetchCountiesAndDropMarkers = () => async dispatch => {
 };
 
 export const onCountyClick = ({ target }) => {
+  console.log("onCountyClick", target.feature.properties);
   return {
     type: ON_COUNTY_CLICK,
     activeCounty: { ...target.feature.properties },

@@ -8,9 +8,7 @@ import {
 } from "../../reducers/map";
 import MapContainer from "./MapContainer";
 
-const mapStateToProps = ({ map }) => {
-  return { ...map };
-};
+const mapStateToProps = ({ map }) => ({ ...map });
 
 const dispatchProps = {
   fetchCountiesAndDropMarkers,

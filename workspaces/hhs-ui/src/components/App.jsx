@@ -17,13 +17,6 @@ export default class App extends PureComponent {
     return { getGeoJsonLayerRef: this.getGeoJsonLayerRef };
   }
 
-  state = {
-    activeCounty: {},
-    zipcodeToLatLngMap: {},
-    validZipcode: true,
-    showHeader: false
-  };
-
   componentDidMount() {
     const { populateZipCodeMap } = this.props;
     populateZipCodeMap();
@@ -88,7 +81,6 @@ export default class App extends PureComponent {
         <div className={styles.Bumper}>
           <InfoPanel />
           <Map
-            {...this.state}
             onCountyMouseOut={this.onCountyMouseOut}
             setGeoJsonLayerRef={this.setGeoJsonLayerRef}
           />
