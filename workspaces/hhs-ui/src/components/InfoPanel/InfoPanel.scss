@@ -1,7 +1,9 @@
 @import "../../scss/palette.scss";
 
 .InfoPanel {
+  overflow: auto;
   position: absolute;
+  max-height: 75%;
   min-height: 1px;
   width: 425px;
   margin-top: 65px;
