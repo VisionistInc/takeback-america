@@ -1,8 +1,8 @@
-import React from "react";
-import Title from "../../Title";
-import Brand from "../../Brand";
-import Input from "../../Input";
-import styles from "./Welcome.scss";
+import React from 'react';
+import Title from '../../Title';
+import Brand from '../../Brand';
+import Input from '../../Input';
+import styles from './Welcome.scss';
 
 export const Spacer = props => {
   return <div className={styles.Spacer} {...props} />;
@@ -14,11 +14,18 @@ export default function Welcome() {
       <Brand style={{ maxWidth: 90 }} />
       <Spacer />
       <Title />
+      <Spacer />
+      <div>
+        <strong>How Does Your Area Stack up?</strong>
+        <Spacer>
+          <Input />
+        </Spacer>
+      </div>
       <div id="welcome">
         <p>
           In 2016,<strong>
             175 Americans died each day from prescription related overdoses
-          </strong>{" "}
+          </strong>{' '}
           (over 64,000 deaths in totla). 70% of those that abuse prescription
           medication first obtained them from friends and family. Help America
           fight the epidemic of prescription drug abuse!
@@ -32,12 +39,6 @@ export default function Welcome() {
           centers near you while highlighting at risk communities that are still
           in need of take-back locations.
         </p>
-        <div>
-          <strong>How Does Your Area Stack up?</strong>
-          <Spacer>
-            <Input />
-          </Spacer>
-        </div>
       </div>
     </div>
   );
