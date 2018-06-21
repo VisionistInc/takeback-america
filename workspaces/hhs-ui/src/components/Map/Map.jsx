@@ -9,7 +9,6 @@ import {
   Popup
 } from "react-leaflet";
 import styles from "./Map.scss";
-import { take } from "rxjs/operators";
 
 const Map = ({
   accessToken,
@@ -17,9 +16,11 @@ const Map = ({
   zoom,
   takeBackFilter,
   counties,
+  states,
   dropMarkers,
   markerLatLng,
   styleCounty,
+  styleState,
   onCountyClick,
   onCountyMouseOver,
   onCountyMouseOut,
@@ -28,10 +29,20 @@ const Map = ({
   setGeoJsonLayerRef,
   zoomTakeBackFilter
 }) => {
+
+  const onEachFeature = (feature, layer) => {
+    layer.on({
+      click: onCountyClick,
+      mouseover: onCountyMouseOver,
+      mouseout: onCountyMouseOut
+    });
+  }
+
   return (
     <div className={styles.Map}>
       <LeafletMap
         center={center}
+        minZoom={3}
         zoom={zoom}
         zoomControl={false}
         preferCanvas
@@ -68,14 +79,13 @@ const Map = ({
         <GeoJSON
           data={counties}
           style={styleCounty}
-          onEachFeature={(feature, layer) => {
-            layer.on({
-              click: onCountyClick,
-              mouseover: onCountyMouseOver,
-              mouseout: onCountyMouseOut
-            });
-          }}
+          onEachFeature={onEachFeature}
           ref={setGeoJsonLayerRef}
+        />
+        <GeoJSON
+          data={states}
+          style={styleState}
+          interactive={false}
         />
       </LeafletMap>
     </div>

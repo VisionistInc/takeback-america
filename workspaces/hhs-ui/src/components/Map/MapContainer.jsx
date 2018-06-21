@@ -39,15 +39,26 @@ export default class MapContainer extends PureComponent {
   };
 
   styleCounty = feature => {
+    const { zoom } = this.props;
     return {
       fillColor: this.getColorByRisk(feature.properties),
-      weight: 1,
+      weight: zoom / 6,
       opacity: 1,
       color: "white",
       dashArray: "3",
       fillOpacity: this.isActiveCounty(feature.properties) ? 0.5 : 1
     };
   };
+
+  styleState = feature => {
+    const { zoom } = this.props;
+    return {
+      fillColor: 'transparent',
+      weight: zoom / 3,
+      opacity: 1,
+      color: "white"
+    };
+  }
 
   onCountyMouseOver = e => {
     const layer = e.target;
@@ -74,6 +85,7 @@ export default class MapContainer extends PureComponent {
       <Map
         {...props}
         styleCounty={this.styleCounty}
+        styleState={this.styleState}
         onCountyClick={onCountyClick}
         onCountyMouseOver={this.onCountyMouseOver}
         onCountyMouseOut={onCountyMouseOut}

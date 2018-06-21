@@ -26,7 +26,7 @@ export default function Welcome() {
           In 2016,<strong>
             175 Americans died each day from prescription related overdoses
           </strong>{' '}
-          (over 64,000 deaths in totla). 70% of those that abuse prescription
+          (over 64,000 deaths in total). 70% of those that abuse prescription
           medication first obtained them from friends and family. Help America
           fight the epidemic of prescription drug abuse!
         </p>
