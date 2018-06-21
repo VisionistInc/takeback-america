@@ -1,5 +1,6 @@
 import React from "react";
 import { round, isEmpty, startCase } from "lodash";
+import ReactTooltip from 'react-tooltip'
 import Aux from "../../../utils/Aux";
 import Link from "../../Link";
 import RiskScore from "../../RiskScore";
@@ -17,37 +18,34 @@ const Spacer = () => {
   return <div className={styles.Spacer} />;
 };
 
-const Factor = ({ title, calculation, last, index }) => {
+const Factor = ({ title, calculation, last, index, notation }) => {
   return (
     <Aux>
-      <div>
-        {title}
-        <Sup>{index + 1}</Sup>:
-        <br />
-        <strong>
-          <span>{calculation}</span>
-        </strong>
+      <div className="risk-factor">
+        <div className="title">{title}:</div>
+        <div className="value">{calculation}</div>
+        <InfoTooltip id={index} notation={notation} />
       </div>
       {!last && <Spacer />}
     </Aux>
   );
 };
 
-const Subnote = ({ index, notation: Notation, last }) => {
-  return (
-    <Aux>
-      <div className={styles.Subnote}>
-        <div>
-          <Sup>{index + 1}</Sup>
-        </div>
-        <div>
-          <Notation />
-        </div>
-      </div>
-      {!last && <Spacer />}
-    </Aux>
-  );
-};
+const InfoTooltip = ({ id, notation: Notation }) => (
+  <Aux>
+    <a className="info-tooltip-button" data-tip data-for={"tooltip-" + id}><i className="fas fa-info-circle" /></a>
+    <ReactTooltip
+      className="info-tooltip"
+      id={"tooltip-" + id} 
+      effect="solid"
+      place="right"
+      type="light"
+      border
+    >
+      <Notation />
+    </ReactTooltip>
+  </Aux>
+);
 
 export default function Details({ activeCounty }) {
   const factors = [
@@ -112,12 +110,6 @@ export default function Details({ activeCounty }) {
 
       {factors.map((item, i) => (
         <Factor key={i} {...item} last={i === factors.length - 1} index={i} />
-      ))}
-
-      <div className={styles.Divider} />
-
-      {factors.map((item, i) => (
-        <Subnote key={i} {...item} last={i === factors.length - 1} index={i} />
       ))}
     </div>
   );

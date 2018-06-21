@@ -5,8 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":
-      "NODE_ENV=development webpack-dev-server --config ./config/webpack",
+    "start": "NODE_ENV=development webpack-dev-server --config ./config/webpack",
     "build": "NODE_ENV=production webpack --config ./config/webpack",
     "pretty": "prettier-eslint --write \"src/**/*.@(js|jsx)\"",
     "cz": "git-cz",
@@ -23,6 +22,7 @@
     "react-dom": "^16.2.0",
     "react-leaflet": "^1.9.1",
     "react-redux": "^5.0.6",
+    "react-tooltip": "^3.6.1",
     "react-transition-group": "^2.3.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -71,7 +71,9 @@
     "webpack-dev-server": "^2.11.1"
   },
   "babel": {
-    "presets": ["./config/.babelrc.js"]
+    "presets": [
+      "./config/.babelrc.js"
+    ]
   },
   "eslintConfig": {
     "extends": "./config/.eslintrc.yml"
