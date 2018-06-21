@@ -6,15 +6,18 @@ import {
   onCountyClick,
   onMove
 } from "../../reducers/map";
+
+import { togglePanel } from "../../reducers/panel";
 import MapContainer from "./MapContainer";
 
-const mapStateToProps = ({ map }) => ({ ...map });
+const mapStateToProps = ({ map, panel }) => ({ ...map, ...panel });
 
 const dispatchProps = {
   fetchCountiesAndDropMarkers,
   onZoomChange,
   onCountyClick,
-  onMove
+  onMove,
+  togglePanel
 };
 
 const mergeProps = (stateProps, { onMove, ...dispatchProps }, ownProps) => {

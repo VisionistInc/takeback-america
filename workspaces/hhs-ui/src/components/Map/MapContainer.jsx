@@ -68,6 +68,12 @@ export default class MapContainer extends PureComponent {
     });
   };
 
+  onCountyClick = event => {
+    const { onCountyClick, togglePanel } = this.props;
+    onCountyClick(event);
+    togglePanel(true);
+  }
+
   render() {
     const {
       fetching,
@@ -86,7 +92,7 @@ export default class MapContainer extends PureComponent {
         {...props}
         styleCounty={this.styleCounty}
         styleState={this.styleState}
-        onCountyClick={onCountyClick}
+        onCountyClick={this.onCountyClick}
         onCountyMouseOver={this.onCountyMouseOver}
         onCountyMouseOut={onCountyMouseOut}
         setGeoJsonLayerRef={setGeoJsonLayerRef}
