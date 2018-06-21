@@ -21,6 +21,7 @@ export const initialState = {
   zoomTakeBackFilter: false,
   accessToken: ACCESS_TOKEN,
   counties: [],
+  states: [],
   dropMarkers: [],
   fetching: true,
   searching: false

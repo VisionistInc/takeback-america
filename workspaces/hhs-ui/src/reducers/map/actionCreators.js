@@ -14,14 +14,16 @@ export let geoJsonLayer = null;
 
 export const fetchCountiesAndDropMarkers = () => async dispatch => {
   try {
-    const [counties, dropMarkers] = await Promise.all([
+    const [counties, dropMarkers, states] = await Promise.all([
       fetch("/api/geojson/counties").then(res => res.json()),
-      fetch("/api/geojson/drop_markers").then(res => res.json())
+      fetch("/api/geojson/drop_markers").then(res => res.json()),
+      fetch("/api/geojson/states").then(res => res.json()),
     ]);
     return dispatch({
       type: FETCH_COUNTIES_AND_DROP_MARKERS,
       counties,
-      dropMarkers
+      dropMarkers,
+      states
     });
   } catch (err) {
     console.error("Error:", err);
