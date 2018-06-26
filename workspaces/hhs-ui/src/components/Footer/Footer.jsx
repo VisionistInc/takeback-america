@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div className={styles.Footer}>
       <Brand style={{ maxWidth: 135 }} src={VisionistLogo} />
-      <p className={styles.Info}>
+      <div className={styles.Info}>
         Take-Back America is a tool developed by data scientists and engineers
         from{" "}
         <Link href="https://www.visionistinc.com/">
@@ -18,16 +18,12 @@ export default function Footer() {
         <Link href="https://www.visionistinc.com/hhs-hack-a-thon/">
           24-hour Opioid Code-a-Thon
         </Link>.
-      </p>
+      </div>
       <div className={styles.Links}>
-        <div>
+        <div className={styles.LinkIcon}>
           <i className="fas fa-chevron-circle-right" />
-          <Link href="mailto:health@visionistinc.com">Contact The Team</Link>
         </div>
-        {/* <div>
-          <i className="fas fa-chevron-circle-right" />
-          What's Next?
-        </div> */}
+        <Link href="mailto:health@visionistinc.com">Contact The Team</Link>
       </div>
     </div>
   );
