@@ -27,7 +27,8 @@ const Map = ({
   onZoomChange,
   onMove,
   setGeoJsonLayerRef,
-  zoomTakeBackFilter
+  zoomTakeBackFilter,
+  scoreFilter
 }) => {
 
   const onEachFeature = (feature, layer) => {
@@ -36,6 +37,14 @@ const Map = ({
       mouseover: onCountyMouseOver,
       mouseout: onCountyMouseOut
     });
+  }
+
+  const filterFeatures = (feature) => {
+    const { Overall } = feature.properties;
+    if (Overall) {
+      return Overall >= scoreFilter[0] && Overall <= scoreFilter[1];
+    }
+    return true;
   }
 
   return (
@@ -77,10 +86,12 @@ const Map = ({
             </CircleMarker>
           ))}
         <GeoJSON
+          key={scoreFilter.toString()} //Key will allow the re-render to occur when filters are picked
           data={counties}
           style={styleCounty}
           onEachFeature={onEachFeature}
           ref={setGeoJsonLayerRef}
+          filter={filterFeatures}
         />
         <GeoJSON
           data={states}

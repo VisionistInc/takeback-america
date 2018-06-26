@@ -5,6 +5,7 @@ import Map from "./Map";
 import InfoPanel from "./InfoPanel";
 import Header from "./Header";
 import Footer from "./Footer";
+import MapFilters from "./MapFilters";
 import isValidZipcode from "../utils/validZipcode";
 import styles from "./App.scss";
 
@@ -80,6 +81,7 @@ export default class App extends PureComponent {
         </div>
         <div className={styles.Bumper}>
           <InfoPanel />
+          <MapFilters />
           <Map
             onCountyMouseOut={this.onCountyMouseOut}
             setGeoJsonLayerRef={this.setGeoJsonLayerRef}
