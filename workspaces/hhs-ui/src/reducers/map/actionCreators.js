@@ -40,6 +40,14 @@ export const onCountyClick = ({ target }) => {
   };
 };
 
+export const clearCountyMarker = () => {
+  return {
+    type: ON_COUNTY_CLICK,
+    activeCounty: {},
+    markerLatLng: null,
+  }
+}
+
 export const onZoomChange = zoom => {
   return {
     type: ON_ZOOM_CHANGE,

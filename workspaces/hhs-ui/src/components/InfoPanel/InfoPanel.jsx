@@ -11,8 +11,9 @@ export default class InfoPanel extends PureComponent {
   }
 
   onPanelClose = () => {
-    const { togglePanel } = this.props;
+    const { togglePanel, clearCountyMarker } = this.props;
     togglePanel(false);
+    clearCountyMarker();
   }
 
   renderContent = () => {
