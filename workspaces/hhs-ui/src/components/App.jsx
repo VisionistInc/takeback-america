@@ -72,11 +72,11 @@ export default class App extends PureComponent {
   toggleHeader = () => this.setState({ showHeader: !this.state.showHeader });
 
   render() {
-    const { showHeader } = this.props;
+    const { showHeader, panelOpen } = this.props;
     return (
       <div className={styles.App}>
         <div className={styles.Header} style={{ height: showHeader ? 110 : 0 }}>
-          {showHeader && <Header />}
+          {(panelOpen || showHeader) && <Header />}
         </div>
         <div className={styles.Bumper}>
           <InfoPanel />
