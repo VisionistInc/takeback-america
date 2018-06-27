@@ -5,6 +5,17 @@ import Spinner from "../Spinner";
 import styles from "./InfoPanel.scss";
 
 export default class InfoPanel extends PureComponent {
+
+  state = {
+    panelOpen: true
+  }
+
+  onPanelClose = () => {
+    const { togglePanel, clearCountyMarker } = this.props;
+    togglePanel(false);
+    clearCountyMarker();
+  }
+
   renderContent = () => {
     const { activeCounty } = this.props;
     return !!Object.keys(activeCounty).length ? (
@@ -13,10 +24,15 @@ export default class InfoPanel extends PureComponent {
       <Welcome />
     );
   };
+
   render() {
-    const { searching } = this.props;
+    const { searching, panelOpen } = this.props;
+
     return (
-      <div className={styles.InfoPanel}>
+      <div className={styles.InfoPanel + " " + (!panelOpen ? styles.HiddenInfoPanel : "")}>
+        <div className={styles.InfoPanelCloseButton} onClick={this.onPanelClose}>
+          &#x274c;
+        </div>
         {searching ? <Spinner /> : this.renderContent()}
       </div>
     );
