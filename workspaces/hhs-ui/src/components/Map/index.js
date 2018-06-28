@@ -20,12 +20,13 @@ const dispatchProps = {
   togglePanel
 };
 
-const mergeProps = (stateProps, { onMove, ...dispatchProps }, ownProps) => {
+const mergeProps = (stateProps, { onMove, onZoomChange, ...dispatchProps }, ownProps) => {
   return {
     ...stateProps,
     ...dispatchProps,
     ...ownProps,
-    onMove: debounce(onMove, 250)
+    onMove: debounce(onMove, 250),
+    onZoomChange: debounce(onZoomChange, 250)
   };
 };
 
