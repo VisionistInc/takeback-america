@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import Map from "./Map";
+import Spinner from "../Spinner";
 
 export default class MapContainer extends PureComponent {
   componentDidMount() {
@@ -86,7 +87,7 @@ export default class MapContainer extends PureComponent {
     } = this.props;
 
     return fetching ? (
-      <div />
+      <Spinner />
     ) : (
       <Map
         {...props}
