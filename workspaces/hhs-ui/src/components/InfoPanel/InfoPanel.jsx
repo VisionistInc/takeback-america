@@ -28,12 +28,16 @@ export default class InfoPanel extends PureComponent {
   render() {
     const { searching, panelOpen } = this.props;
 
+    if (searching) {
+      return <Spinner />;
+    }
+
     return (
       <div className={styles.InfoPanel + " " + (!panelOpen ? styles.HiddenInfoPanel : "")}>
         <div className={styles.InfoPanelCloseButton} onClick={this.onPanelClose}>
           &#x274c;
         </div>
-        {searching ? <Spinner /> : this.renderContent()}
+        {this.renderContent()}
       </div>
     );
   }
