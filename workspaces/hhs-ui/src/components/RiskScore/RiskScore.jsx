@@ -47,15 +47,18 @@ const RiskMarker = () => (
   </span>
 );
 
-const RiskScore = ({ riskScore }) => (
+const RiskScore = ({ riskScore, title }) => (
   <React.Fragment>
-    <h3 style={{ marginBottom: 15 }}>OVERALL RISK SCORE: {riskScore}</h3>
+    {title && riskScore && 
+      <h3 style={{ marginBottom: 15, textTransform: "uppercase" }}>{title}: {riskScore}</h3>
+    }
     <div
       style={{
         display: "flex",
         height: "20px",
         marginTop: "5px",
-        marginBottom: "30px"
+        marginBottom: "10px",
+        width: "100%"
       }}
     >
       {riskColors.map(color => (
