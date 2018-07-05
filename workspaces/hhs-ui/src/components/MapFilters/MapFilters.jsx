@@ -40,8 +40,8 @@ export default class MapFilters extends PureComponent {
       <div>
         {this.getFilterIcon()}
         <div className={`${styles.MapFilters} ${!filtersOpen ? styles.MapFiltersHidden : ""}`}>
-          <h4>Map Filters</h4>
           <div className={styles.MapFiltersGroup}>
+            <h3>Overall Risk Score</h3>
             <RiskScore />
             <Range 
               value={localScoreFilter}

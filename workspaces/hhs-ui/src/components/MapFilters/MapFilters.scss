@@ -16,11 +16,15 @@
 .MapFiltersButton {
   width: 50px;
   height: 50px;
+  line-height: 50px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 2px;
   &:hover {
     cursor: pointer;
+    background-color: #f4f4f4;
   }
 }
 
@@ -32,6 +36,7 @@
   min-height: 1px;
   width: 400px;
   transition: opacity;
+  border-radius: 2px;
 }
 
 .MapFiltersGroup {

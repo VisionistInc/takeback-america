@@ -8,6 +8,7 @@ import {
   Marker,
   Popup
 } from "react-leaflet";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import styles from "./Map.scss";
 
 class Map extends PureComponent {
@@ -41,7 +42,10 @@ class Map extends PureComponent {
     if (Overall) {
       return Overall >= scoreFilter[0] && Overall <= scoreFilter[1];
     }
-    return true;
+    else if (scoreFilter[0] === 0 && scoreFilter[1] === 1) {
+      return true;
+    }
+    return false;
   }
 
   filterDropMarkers = markers => {
@@ -53,6 +57,20 @@ class Map extends PureComponent {
       return mapBounds.contains(latLng);
     });
   }
+
+  createClusterCustomIcon = cluster => {
+    return L.divIcon({
+      html: `<span>${cluster.getChildCount()}</span>`,
+      className: styles.MarkerCluster,
+      iconSize: L.point(40, 40, true),
+    });
+  }
+
+  createMarkerIcon = L.divIcon({
+    className: styles.Marker,
+    iconSize: L.point(20, 20, true),
+  });
+  
 
   render() {
     const {
@@ -74,7 +92,7 @@ class Map extends PureComponent {
     } = this.props;
     
     const filteredMarkers = this.filterDropMarkers(dropMarkers);
-    
+
     return (
       <div className={styles.Map}>
         <LeafletMap
@@ -94,28 +112,29 @@ class Map extends PureComponent {
           />
           {markerLatLng && <Marker position={markerLatLng} />}
           {(takeBackFilter || zoomTakeBackFilter) &&
-            filteredMarkers.map(({ lat, lng, name, address, googleMapsUrl }, idx) => (
-              <CircleMarker
-                key={idx}
-                fillColor="#66BBFF"
-                fillOpacity={1}
-                center={[Number(lat), Number(lng)]}
-                radius={4}
-              >
-                <Popup>
-                  <div>
-                    <p>
-                      {name} <br />
-                      <a href={googleMapsUrl} target="_blank">
-                        {address}
-                      </a>
-                    </p>
-                  </div>
-                </Popup>
-              </CircleMarker>
-            ))}
+            <MarkerClusterGroup showCoverageOnHover={false} iconCreateFunction={this.createClusterCustomIcon}> {
+              filteredMarkers.map(({ lat, lng, name, address, googleMapsUrl }, idx) => (
+                <Marker
+                  icon={this.createMarkerIcon}
+                  key={idx}
+                  position={[Number(lat), Number(lng)]}
+                >
+                  <Popup>
+                    <div>
+                      <p>
+                        {name} <br />
+                        <a href={googleMapsUrl} target="_blank">
+                          {address}
+                        </a>
+                      </p>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
+              </MarkerClusterGroup>
+            }
           <GeoJSON
-            key={scoreFilter.toString()} //Key will allow the re-render to occur when filters are picked
+            key={"counties:" + scoreFilter.toString()} //Key will allow the re-render to occur when filters are picked
             data={counties}
             style={styleCounty}
             onEachFeature={this.onEachFeature}
@@ -123,6 +142,7 @@ class Map extends PureComponent {
             filter={this.filterFeatures}
           />
           <GeoJSON
+            key={"states:" + scoreFilter.toString()}
             data={states}
             style={styleState}
             interactive={false}
