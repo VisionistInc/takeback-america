@@ -5,17 +5,16 @@
   position: absolute;
   max-height: 75%;
   min-height: 1px;
-  opacity: .9;
-  width: 425px;
+  opacity: 0.9;
+  width: 375px;
   margin-top: 20px;
   margin-left: 20px;
-  padding: 25px;
-  padding-bottom: 35px;
+  padding: 10px 15px 15px 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-sizing: border-box;
   background: $color-white;
   z-index: 999;
-  transition: height 1s cubic-bezier(0.77, 0, 0.02, 1), opacity .75s;
+  transition: height 1s cubic-bezier(0.77, 0, 0.02, 1), opacity 0.75s;
 }
 
 .HiddenInfoPanel {
@@ -24,6 +23,8 @@
 }
 
 .InfoPanelCloseButton {
+  float: right;
+  font-size: 20px;
   position: absolute;
   right: 15px;
   top: 15px;

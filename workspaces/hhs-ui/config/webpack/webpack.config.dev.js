@@ -17,7 +17,8 @@ const devServer = {
       target: `http://${LOCALHOST}:${PORT_NUMBER}/`,
       pathRewrite: { "^/": "" }
     }
-  }
+  },
+  disableHostCheck: true
 };
 
 module.exports = Object.assign({}, webpackConfig, {
