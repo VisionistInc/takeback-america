@@ -33,12 +33,7 @@ export default class Welcome extends React.Component {
         </div>
         <br />
         <div
-          style={{
-            textAlign: "right",
-            fontSize: "13px",
-            fontWeight: "bold",
-            textDecoration: "underline"
-          }}
+          className={styles.ShowMore}
           onClick={this.toggleShowMore}
         >
           SHOW {this.state.showWelcomeMessage ? "LESS" : "MORE"}
