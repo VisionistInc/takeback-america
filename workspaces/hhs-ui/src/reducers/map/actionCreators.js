@@ -51,7 +51,7 @@ export const onZoomChange = zoom => {
   return {
     type: ON_ZOOM_CHANGE,
     zoom,
-    zoomTakeBackFilter: zoom >= 9
+    zoomTakeBackFilter: zoom >= 10
   };
 };
 

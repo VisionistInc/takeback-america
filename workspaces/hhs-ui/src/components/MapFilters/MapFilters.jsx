@@ -6,12 +6,16 @@ import RiskScore from "../RiskScore/RiskScore";
 
 export default class MapFilters extends PureComponent {
   state = {
-    localScoreFilter: [0,1]
+    localScoreFilter: [0,1],
+    mapIsFiltered: false
   }
 
   onFilterChange = range => {
+    const { localScoreFilter } = this.state;
+    console.log(range);
     this.setState({
-      localScoreFilter: range
+      localScoreFilter: range,
+      mapIsFiltered: range[0] > 0 || range[1] < 1
     });
   }
 
@@ -21,9 +25,13 @@ export default class MapFilters extends PureComponent {
   }
 
   getFilterIcon = () => {
+    const { mapIsFiltered } = this.state;
     return (
-      <div className={styles.MapFiltersButton} onClick={this.onToggleFilters}>
+      <div 
+        className={mapIsFiltered ? styles.MapFiltersButtonFiltered : styles.MapFiltersButton} 
+        onClick={this.onToggleFilters}>
         <i className="fas fa-filter" />
+        <span className={styles.FilterLabel}>Filter: { mapIsFiltered ? "On" : "Off"}</span>
       </div>
     );
   }
@@ -33,15 +41,21 @@ export default class MapFilters extends PureComponent {
     setScoreFilter(range);
   }
 
+  handleStyle = { 
+    backgroundColor: '#66BBFF',
+    borderColor: '#FFF'
+  }
+
   render() {
     const { filtersOpen } = this.props;
     const { localScoreFilter } = this.state;
+
     return (
       <div>
         {this.getFilterIcon()}
-        <div className={`${styles.MapFilters} ${!filtersOpen ? styles.MapFiltersHidden : ""}`}>
-          <h4>Map Filters</h4>
+        <div className={`${styles.MapFiltersContainer} ${!filtersOpen ? styles.MapFiltersHidden : ""}`}>
           <div className={styles.MapFiltersGroup}>
+            <h3>Overall Risk Score</h3>
             <RiskScore />
             <Range 
               value={localScoreFilter}
@@ -52,6 +66,8 @@ export default class MapFilters extends PureComponent {
               allowCross={false}
               onChange={this.onFilterChange}
               onAfterChange={this.onFilterAfterChange}
+              trackStyle={[{ backgroundColor: '#17436B' }]}
+              handleStyle={[this.handleStyle, this.handleStyle]}
             />
           </div>
         </div>
