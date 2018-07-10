@@ -104,7 +104,7 @@ export default function Details({ activeCounty }) {
         }`}</strong>
       </h2>
 
-      <RiskScore riskScore={round(activeCounty.Overall, 2)} />
+      <RiskScore title="Overall Risk Score" riskScore={round(activeCounty.Overall, 2)} />
 
       <h3 style={{ marginBottom: 5 }}>COMMUNITY RISK FACTORS:</h3>
 

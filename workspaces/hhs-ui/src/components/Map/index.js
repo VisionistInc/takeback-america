@@ -10,7 +10,7 @@ import {
 import { togglePanel } from "../../reducers/panel";
 import MapContainer from "./MapContainer";
 
-const mapStateToProps = ({ map, panel }) => ({ ...map, ...panel });
+const mapStateToProps = ({ map, panel, filters }) => ({ ...map, ...panel, ...filters });
 
 const dispatchProps = {
   fetchCountiesAndDropMarkers,
