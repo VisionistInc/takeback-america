@@ -1,0 +1,80 @@
+@import "../../scss/palette.scss";
+
+.MapFiltersContainer, .MapFiltersButton, .MapFiltersButtonFiltered {
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-sizing: border-box;
+  background: $color-white;
+  z-index: 999;
+  transition: height 1s cubic-bezier(0.77, 0, 0.02, 1);
+}
+
+.FilterLabel {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.MapFiltersButton, .MapFiltersButtonFiltered {
+  display: flex;
+  flex-direction: column;
+  width: 75px;
+  height: 75px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  &:hover {
+    cursor: pointer;
+    background-color: #f4f4f4;
+  }
+  i {
+    color: #d2d2d2;
+    margin-bottom: 5px;
+  }
+}
+
+.MapFiltersButtonFiltered {
+  i {
+    color: #66BBFF
+  }
+}
+
+.MapFiltersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 100px;
+  min-height: 1px;
+  width: 400px;
+  transition: opacity;
+  border-radius: 2px;
+  padding-bottom: 25px;
+}
+
+.MapFiltersGroup {
+  width: 300px;
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.MapFiltersHidden {
+  opacity: 0;
+}
+
+:global {
+  .rc-slider {
+    .rc-slider-handle {
+      &:hover, &:active, &:focus {
+        box-shadow: none;
+        border-color: #17436B !important;
+      }
+    }
+  }
+}

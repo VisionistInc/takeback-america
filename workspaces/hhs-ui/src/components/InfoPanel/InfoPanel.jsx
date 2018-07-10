@@ -35,7 +35,7 @@ export default class InfoPanel extends PureComponent {
     return (
       <div className={styles.InfoPanel + " " + (!panelOpen ? styles.HiddenInfoPanel : "")}>
         <div className={styles.InfoPanelCloseButton} onClick={this.onPanelClose}>
-          &#x274c;
+          &times;
         </div>
         {this.renderContent()}
       </div>

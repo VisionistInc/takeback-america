@@ -6,17 +6,12 @@ import Link from "../../Link";
 import RiskScore from "../../RiskScore";
 import styles from "./Details.scss";
 
-const Sup = ({ children }) => {
-  return (
-    <sup className={styles.Sup}>
-      <strong>{children}</strong>
-    </sup>
-  );
-};
-
 const Spacer = () => {
   return <div className={styles.Spacer} />;
 };
+
+// Simple check for common mobile devices
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 const Factor = ({ title, calculation, last, index, notation }) => {
   return (
@@ -41,6 +36,7 @@ const InfoTooltip = ({ id, notation: Notation }) => (
       place="right"
       type="light"
       border
+      event={isMobile ? "click" : undefined}
     >
       <Notation />
     </ReactTooltip>
@@ -104,7 +100,7 @@ export default function Details({ activeCounty }) {
         }`}</strong>
       </h2>
 
-      <RiskScore riskScore={round(activeCounty.Overall, 2)} />
+      <RiskScore title="Overall Risk Score" riskScore={round(activeCounty.Overall, 2)} />
 
       <h3 style={{ marginBottom: 5 }}>COMMUNITY RISK FACTORS:</h3>
 
