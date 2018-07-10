@@ -36,7 +36,7 @@ export default class Welcome extends React.Component {
           className={styles.ShowMore}
           onClick={this.toggleShowMore}
         >
-          SHOW {this.state.showWelcomeMessage ? "LESS" : "MORE"}
+          About {this.state.showWelcomeMessage ? <i className="fas fa-chevron-up"/> : <i className="fas fa-chevron-down"/>}
         </div>
         {this.state.showWelcomeMessage && (
           <div id="welcome">

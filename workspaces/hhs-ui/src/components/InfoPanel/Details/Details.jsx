@@ -92,7 +92,7 @@ export default function Details({ activeCounty }) {
 
   return (
     <div>
-      <h2 style={{ marginTop: 0 }}>
+      <h2 style={{ marginTop: 0, marginRight: 20 }}>
         <strong>{`${activeCounty.NAME} County${
           !isEmpty(activeCounty.state)
             ? ", " + startCase(activeCounty.state.toLowerCase())
