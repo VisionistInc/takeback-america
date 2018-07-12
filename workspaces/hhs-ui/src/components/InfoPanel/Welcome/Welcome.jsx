@@ -50,13 +50,10 @@ export default class Welcome extends React.Component {
               abuse!
             </p>
             <p>
-              Drug take-back centers are a vital piece of a community opioid
-              prevention strategy. Where are take-back centers currently
-              located? What areas are still undeserved? Using data provided by
-              HHS, DEA, and others, Take-Back AMERICA helps health practitioners
+              Using data provided by HHS, DEA, and others, Take-Back AMERICA helps health practitioners
               and the public address these questions. Use the map below to find
               drug disposal centers near you while highlighting at risk
-              communities that are still in need of take-back locations.
+              communities.
             </p>
           </div>
         )}

@@ -4,8 +4,9 @@
   overflow: auto;
   position: absolute;
   bottom: 0;
+  right: 0;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-right: 20px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   box-sizing: border-box;
   background: $color-white;
@@ -48,7 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  left: 100px;
+  right: 100px;
   min-height: 1px;
   width: 400px;
   transition: opacity;

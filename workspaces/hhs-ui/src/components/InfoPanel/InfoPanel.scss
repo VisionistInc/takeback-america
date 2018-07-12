@@ -1,9 +1,8 @@
 @import "../../scss/palette.scss";
 
 .InfoPanel {
-  overflow: visible;
+  overflow: auto;
   position: absolute;
-  max-height: 75%;
   min-height: 1px;
   opacity: 0.9;
   width: 420px;
@@ -24,7 +23,6 @@
 
 .InfoPanelCloseButton {
   float: right;
-  font-size: 20px;
   position: absolute;
   right: 15px;
   top: 15px;

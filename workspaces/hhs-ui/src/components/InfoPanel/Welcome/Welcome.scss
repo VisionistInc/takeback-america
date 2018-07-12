@@ -11,3 +11,9 @@
     cursor: pointer;
   }
 }
+
+:global {
+  #welcome {
+    font-size: 14px;
+  }
+}
