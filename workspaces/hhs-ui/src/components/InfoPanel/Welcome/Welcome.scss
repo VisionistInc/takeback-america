@@ -3,11 +3,10 @@
 }
 
 .ShowMore {
-  text-align: right;
+  text-align: left;
   font-size: 13px;
   font-weight: bold;
   text-decoration: underline;
-  float: right;
   &:hover {
     cursor: pointer;
   }
