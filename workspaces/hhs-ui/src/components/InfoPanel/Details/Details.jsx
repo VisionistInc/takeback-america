@@ -28,9 +28,9 @@ const Factor = ({ title, calculation, last, index, notation }) => {
 
 const InfoTooltip = ({ id, notation: Notation }) => (
   <Aux>
-    <a className="info-tooltip-button" data-tip data-for={"tooltip-" + id}><i className="fas fa-info-circle" /></a>
+    <a className="info" data-tip data-for={"tooltip-" + id}><i className="fas fa-info-circle" /></a>
     <ReactTooltip
-      className="info-tooltip"
+      className="tooltip"
       id={"tooltip-" + id} 
       effect="solid"
       place="right"
