@@ -1,18 +1,6 @@
 import React from "react";
 
 const riskColors = [
-/*  "#e3d9a1",
-  "#aabe8e",
-  "#46a868",
-  "#008971",
-  "#00696d",
-  "#00485b",
-  "#002a3d"
-*/
-  //ORANGES
-  //BROWNS
-  //YELLOWS
-//  "#fbf2ca",
   "#fdf9e2",
   "#f9f3c6",
   "#f4e596",
@@ -45,35 +33,11 @@ const rskcol = [
   //YELLOWS
   "#f4e596",
   "#f9f3c6",
-//  "#fbf2ca"
   "#fdf9e2"
-
-    ]
-
-
+];
 
 const getColorByRisk = score => {
   const risk = Number(score);
-/*    if (isNaN(risk)) {
-      return "#DCDCDC";
-    } else if (risk > 0.8) {
-      return "#002a3d";
-    } else if (risk > 0.7) {
-      return "#00485b";
-    } else if (risk > 0.6) {
-      return "#00696d";
-    } else if (risk > 0.5) {
-      return "#008971";
-    } else if (risk > 0.4) {
-      return "#46a868";
-    } else if (risk > 0.3) {
-      return "#aabe8e";
-    } else if (risk > 0.2) {
-      return "#e3d9a1";
-    } else {
-      return "#FFEDA0";
-    }
-*/
     if (isNaN(risk)) {
       return rskcol[0];
     } else if (risk > 0.7) {

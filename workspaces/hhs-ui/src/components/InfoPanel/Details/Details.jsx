@@ -28,7 +28,7 @@ const Factor = ({ title, calculation, last, index, notation }) => {
 
 
 //A non-tooltip-having class for state and national info
-const MyRnk = ({ title, calculation, last }) => {
+const Ranking = ({ title, calculation, last }) => {
   return (
     <Aux>
       <div className="rank-factor">
@@ -105,10 +105,11 @@ export default function Details({ activeCounty }) {
   ];
 
   // Set of Rank information
+  // trying to make the activeCounty variables bold...
   const rankings = [ 
     {title: "This ranks in the " + 
       activeCounty.NatlScore_Ordinal+" percentile nationwide."
-    },    
+    },
     {title: "This ranks " +
       activeCounty.StateScore_Ordinal+" of "+
       activeCounty.CountyCount+" counties statewide."
@@ -128,7 +129,7 @@ export default function Details({ activeCounty }) {
       <RiskScore title="Overall Risk Score" riskScore={round(activeCounty.Overall, 2)} />
 
       {rankings.map((item, i) => (
-        <MyRnk key={i} {...item} last={i === rankings.length - 1} index={i} />
+        <Ranking key={i} {...item} last={i === rankings.length - 1} index={i} />
       ))}
 
       <h3 style={{ marginBottom: 5 }}>COMMUNITY RISK FACTORS:</h3>
