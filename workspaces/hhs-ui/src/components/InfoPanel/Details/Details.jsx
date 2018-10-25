@@ -105,20 +105,14 @@ export default function Details({ activeCounty }) {
   ];
 
   // Set of Rank information
-  const rankings = [
-//    {title: "National Percentile: " + activeCounty.NatlScore_Ordinal+" (higher is better)"
-//    },    
-    {title: "This ranks in the " + activeCounty.NatlScore_Ordinal+" percentile nationwide."
-  },    
-
-//    {title: "State Rank: " + 
-//        activeCounty.StateScore_Ordinal+" of "+
-//        activeCounty.CountyCount+" counties (lower is better)"
-//    }
-    {title: "This ranks " + 
-    activeCounty.StateScore_Ordinal+" of "+
-    activeCounty.CountyCount+" counties statewide."
-}
+  const rankings = [ 
+    {title: "This ranks in the " + 
+      activeCounty.NatlScore_Ordinal+" percentile nationwide."
+    },    
+    {title: "This ranks " +
+      activeCounty.StateScore_Ordinal+" of "+
+      activeCounty.CountyCount+" counties statewide."
+    }
   ]
 
   return (
