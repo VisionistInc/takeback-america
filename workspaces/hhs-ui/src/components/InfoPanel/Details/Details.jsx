@@ -26,6 +26,20 @@ const Factor = ({ title, calculation, last, index, notation }) => {
   );
 };
 
+
+//A non-tooltip-having class for state and national info
+const MyRnk = ({ title, calculation, last }) => {
+  return (
+    <Aux>
+      <div className="rank-factor">
+        <div className="title">{title}</div>
+        <div className="value">{calculation}</div>
+      </div>
+      {!last && <Spacer />}
+    </Aux>
+  );
+};
+
 const InfoTooltip = ({ id, notation: Notation }) => (
   <Aux>
     <a className="info-tooltip-button" data-tip data-for={"tooltip-" + id}><i className="fas fa-info-circle" /></a>
@@ -45,50 +59,67 @@ const InfoTooltip = ({ id, notation: Notation }) => (
 
 export default function Details({ activeCounty }) {
   const factors = [
-    {
-      title: "Drug poisoning death rate per 100,000",
+    {title: "Drug poisoning death rate per 100,000",
       calculation: round(activeCounty.Drug_Poison_Rate, 2),
       notation: () => (
         <Aux>
-          Age-adjusted death rates for drug poisoning per 100,000 population (<Link href="https://www.cdc.gov/nchs/data-visualization/drug-poisoning-mortality/">
-            NCHS, 2015
-          </Link>)
+          Drug poisoning death rate per 100,000 population 
+          (CDC age-adjusted or crude rate if not suppressed; NCHS-modeled age-adjusted rate if suppressed)
+		<br></br>(<Link href="https://wonder.cdc.gov/ucd-icd10.html">CDC, 2016</Link>; 
+			<Link href="https://www.cdc.gov/nchs/data-visualization/drug-poisoning-mortality/"> NCHS, 2016</Link>)
         </Aux>
       )
     },
-    {
-      title: "Opioid prescriptions per 100 residents",
+    {title: "Opioid prescriptions per 100 residents",
       calculation: round(activeCounty.OpioidRX_Rate, 2),
       notation: () => (
         <Aux>
-          The estimated rate of opioid prescriptions per 100 residents (<Link href="https://www.cdc.gov/drugoverdose/maps/rxrate-maps.html">
+          Estimated rate of opioid prescriptions per 100 residents (state rate if missing county rate)
+		<br></br>(<Link href="https://www.cdc.gov/drugoverdose/maps/rxrate-maps.html">
             CDC, 2016
           </Link>)
         </Aux>
       )
     },
-    {
-      title: "Adults reporting poor or fair health",
-      calculation: round(activeCounty.Fair_Poor_Rate, 2),
+    {title: "Poor physical health days reported",
+      calculation: round(activeCounty.RSK_Phys_Unhealthy_Days, 2),
       notation: () => (
         <Aux>
-          Age-adjusted percentage of adults reporting fair or poor health (<Link href="http://www.countyhealthrankings.org/">
-            University of Wisconsin, 2015
+          Age-adjusted average number of physically unhealthy days reported in past 30 days
+		<br></br>(<Link href="http://www.countyhealthrankings.org/">
+            University of Wisconsin, 2016
           </Link>)
         </Aux>
       )
-    },
-    {
-      title: "Take-Back sites per 100,000 population",
+    },    
+    {title: "Number of Take-Back sites in county",
       calculation: round(activeCounty.DropBox_Rate, 2),
       notation: () => (
         <Aux>
-          The number of registered prescription drug take-back sites per 100,000
-          residents (Visionist generated, 2017)
+          Number of DEA-registered prescription drug take-back sites in the county
+    <br></br>(Note: This number does not include temporary boxes set up specifically for National Take-Back Day)
+		<br></br>(Visionist generated, 2018)
         </Aux>
       )
     }
   ];
+
+  // Set of Rank information
+  const rankings = [
+//    {title: "National Percentile: " + activeCounty.NatlScore_Ordinal+" (higher is better)"
+//    },    
+    {title: "This ranks in the " + activeCounty.NatlScore_Ordinal+" percentile nationwide."
+  },    
+
+//    {title: "State Rank: " + 
+//        activeCounty.StateScore_Ordinal+" of "+
+//        activeCounty.CountyCount+" counties (lower is better)"
+//    }
+    {title: "This ranks " + 
+    activeCounty.StateScore_Ordinal+" of "+
+    activeCounty.CountyCount+" counties statewide."
+}
+  ]
 
   return (
     <div>
@@ -101,6 +132,10 @@ export default function Details({ activeCounty }) {
       </h2>
 
       <RiskScore title="Overall Risk Score" riskScore={round(activeCounty.Overall, 2)} />
+
+      {rankings.map((item, i) => (
+        <MyRnk key={i} {...item} last={i === rankings.length - 1} index={i} />
+      ))}
 
       <h3 style={{ marginBottom: 5 }}>COMMUNITY RISK FACTORS:</h3>
 
