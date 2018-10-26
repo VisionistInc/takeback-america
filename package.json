@@ -16,7 +16,8 @@
     "build": "yarn lerna run build --scope hhs-ui"
   },
   "dependencies": {
-    "lerna": "^2.10.2"
+    "lerna": "^2.10.2",
+    "npm": "^6.4.1"
   },
   "workspaces": [
     "workspaces/*"

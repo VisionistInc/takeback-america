@@ -30,18 +30,18 @@
 }
 
 :global {
-  .info-tooltip-button {
-    font-size:19px;
+  .info {
+    font-size: 19px;
     margin-left: 5px;
-  }
 
-  .info-tooltip {
-    font-size: 17px;
-    pointer-events: auto;
-    max-width: 250px;
-    opacity: 1 !important;
-    &:hover {
-      visibility: visible;
+    + .tooltip {
+      font-size: 17px;
+      pointer-events: auto;
+      max-width: 250px;
+      opacity: 1 !important;
+      &:hover {
+        visibility: visible;
+      }
     }
   }
 
@@ -55,8 +55,10 @@
 
     .value {
       font-weight: bold;
-      flex-basis: 0;
       margin-left: 3px;
+      flex: 1;
+      text-align: right;
     }
+
   }
 }

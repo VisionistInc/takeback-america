@@ -4,7 +4,7 @@ const path = require('path');
 const zeropad = require('zeropad');
 
 const inFile = fs.readFileSync(
-  path.join(__dirname, 'HHS_json_12_22_2017.json')
+  path.join(__dirname, 'newdata.json')
 );
 
 const rawData = JSON.parse(inFile);
