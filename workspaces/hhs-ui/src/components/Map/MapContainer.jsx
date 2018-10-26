@@ -12,7 +12,7 @@ getColorByRisk = ({ Overall }) => {
   const rskcol = [
 //NULL
 "DCDCDC",
-//   4  REDS
+//REDS
 "#700822",
 "#8c131e",
 "#b31b18",
@@ -28,7 +28,7 @@ getColorByRisk = ({ Overall }) => {
 "#f4e596",
 "#f9f3c6",
 "#fdf9e2"
-  ]
+]
 
   const risk = Number(Overall);
   if (isNaN(risk)) {
@@ -52,7 +52,7 @@ getColorByRisk = ({ Overall }) => {
   } else if (risk > 0.35) {
     return rskcol[9];
   } else if (risk > 0.325) {
-    return rskcol[10];;
+    return rskcol[10];
   } else if (risk > 0.3) {
     return rskcol[11];
   } else if (risk > 0.2) {
@@ -75,7 +75,7 @@ getColorByRisk = ({ Overall }) => {
       fillColor: this.getColorByRisk(feature.properties),
       weight: zoom / 6,
       opacity: 1,
-      color: "#bab9c4",
+      color: "#bab9c4", //outline color
       dashArray: "3",
       fillOpacity: this.isActiveCounty(feature.properties) ? 0.5 : 1
     };
@@ -87,7 +87,7 @@ getColorByRisk = ({ Overall }) => {
       fillColor: 'transparent',
       weight: zoom / 10,
       opacity: 1,
-      color: "#5a5972"
+      color: "#5a5972" //outline color
     };
   }
 

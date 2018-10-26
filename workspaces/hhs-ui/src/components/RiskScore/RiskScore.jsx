@@ -1,6 +1,7 @@
 import React from "react";
 
 const riskColors = [
+  //reverse order from below
   "#fdf9e2",
   "#f9f3c6",
   "#f4e596",
@@ -18,7 +19,7 @@ const riskColors = [
 const rskcol = [
   //NULL
   "DCDCDC",
-  //   4  REDS
+  //REDS
   "#700822",
   "#8c131e",
   "#b31b18",
@@ -59,7 +60,7 @@ const getColorByRisk = score => {
     } else if (risk > 0.35) {
       return rskcol[9];
     } else if (risk > 0.325) {
-      return rskcol[10];;
+      return rskcol[10];
     } else if (risk > 0.3) {
       return rskcol[11];
     } else if (risk > 0.2) {

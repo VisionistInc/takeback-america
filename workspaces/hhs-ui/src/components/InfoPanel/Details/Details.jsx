@@ -26,20 +26,6 @@ const Factor = ({ title, calculation, last, index, notation }) => {
   );
 };
 
-
-//A non-tooltip-having class for state and national info
-const Ranking = ({ title, calculation, last }) => {
-  return (
-    <Aux>
-      <div className="rank-factor">
-        <div className="title">{title}</div>
-        <div className="value">{calculation}</div>
-      </div>
-      {!last && <Spacer />}
-    </Aux>
-  );
-};
-
 const InfoTooltip = ({ id, notation: Notation }) => (
   <Aux>
     <a className="info" data-tip data-for={"tooltip-" + id}><i className="fas fa-info-circle" /></a>
@@ -104,18 +90,6 @@ export default function Details({ activeCounty }) {
     }
   ];
 
-  // Set of Rank information
-  // trying to make the activeCounty variables bold...
-  const rankings = [ 
-    {title: "This ranks in the " + 
-      activeCounty.NatlScore_Ordinal+" percentile nationwide."
-    },
-    {title: "This ranks " +
-      activeCounty.StateScore_Ordinal+" of "+
-      activeCounty.CountyCount+" counties statewide."
-    }
-  ]
-
   return (
     <div>
       <h2 style={{ marginTop: 0, marginRight: 20 }}>
@@ -128,15 +102,20 @@ export default function Details({ activeCounty }) {
 
       <RiskScore title="Overall Risk Score" riskScore={round(activeCounty.Overall, 2)} />
 
-      {rankings.map((item, i) => (
-        <Ranking key={i} {...item} last={i === rankings.length - 1} index={i} />
-      ))}
+      <p style={{ marginBottom: 8, fontSize: 15.5}}>
+        This ranks in the <b>{`${activeCounty.NatlScore_Ordinal}`}</b> percentile nationwide.
+      </p>
+
+      <p style={{ marginTop: 0, fontSize: 15.5}}>
+      This ranks <b>{`${activeCounty.StateScore_Ordinal}`}</b> of <b>{`${activeCounty.CountyCount}`}</b> counties statewide.
+      </p>
 
       <h3 style={{ marginBottom: 5 }}>COMMUNITY RISK FACTORS:</h3>
 
       {factors.map((item, i) => (
         <Factor key={i} {...item} last={i === factors.length - 1} index={i} />
       ))}
+
     </div>
   );
 }
