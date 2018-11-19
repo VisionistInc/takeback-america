@@ -3,7 +3,6 @@
 .Dropdown {
   height: 100%;
   width: 100%;
-  padding-top: 10px;
   background: #d7363b;
   color: $color-white;
   display: flex;
@@ -17,8 +16,9 @@
   }
 
   > div {
-    margin-left: -20px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   }
 }

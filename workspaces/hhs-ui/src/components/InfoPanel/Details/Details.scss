@@ -28,3 +28,37 @@
     letter-spacing: 0;
   }
 }
+
+:global {
+  .info {
+    font-size: 19px;
+    margin-left: 5px;
+
+    + .tooltip {
+      font-size: 17px;
+      pointer-events: auto;
+      max-width: 250px;
+      opacity: 1 !important;
+      &:hover {
+        visibility: visible;
+      }
+    }
+  }
+
+  .risk-factor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .title {
+      font-size: 15px;
+    }
+
+    .value {
+      font-weight: bold;
+      margin-left: 3px;
+      flex: 1;
+      text-align: right;
+    }
+
+  }
+}

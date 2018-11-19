@@ -14,14 +14,16 @@ export let geoJsonLayer = null;
 
 export const fetchCountiesAndDropMarkers = () => async dispatch => {
   try {
-    const [counties, dropMarkers] = await Promise.all([
+    const [counties, dropMarkers, states] = await Promise.all([
       fetch("/api/geojson/counties").then(res => res.json()),
-      fetch("/api/geojson/drop_markers").then(res => res.json())
+      fetch("/api/geojson/drop_markers").then(res => res.json()),
+      fetch("/api/geojson/states").then(res => res.json()),
     ]);
     return dispatch({
       type: FETCH_COUNTIES_AND_DROP_MARKERS,
       counties,
-      dropMarkers
+      dropMarkers,
+      states
     });
   } catch (err) {
     console.error("Error:", err);
@@ -30,7 +32,7 @@ export const fetchCountiesAndDropMarkers = () => async dispatch => {
 };
 
 export const onCountyClick = ({ target }) => {
-  console.log("onCountyClick", target.feature.properties);
+  console.log("onCountyClick", target.feature.properties, target.getCenter());
   return {
     type: ON_COUNTY_CLICK,
     activeCounty: { ...target.feature.properties },
@@ -38,11 +40,18 @@ export const onCountyClick = ({ target }) => {
   };
 };
 
+export const clearCountyMarker = () => {
+  return {
+    type: ON_COUNTY_CLICK,
+    markerLatLng: null,
+  }
+}
+
 export const onZoomChange = zoom => {
   return {
     type: ON_ZOOM_CHANGE,
     zoom,
-    zoomTakeBackFilter: zoom >= 9
+    zoomTakeBackFilter: zoom >= 10
   };
 };
 

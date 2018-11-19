@@ -1,3 +1,19 @@
 .Spacer {
   margin-top: 10px;
 }
+
+.ShowMore {
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+:global {
+  #welcome {
+    font-size: 14px;
+  }
+}

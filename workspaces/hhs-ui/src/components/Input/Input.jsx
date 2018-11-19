@@ -66,7 +66,7 @@ export default class Input extends PureComponent {
       <div className={styles.Input} {...props}>
         <div style={{ position: "relative" }}>
           <input
-            type="text"
+            type="number"
             id="header-search"
             placeholder="Search by ZIP code"
             onKeyPress={this.searchZipCode}

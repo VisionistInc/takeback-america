@@ -5,6 +5,7 @@ import Map from "./Map";
 import InfoPanel from "./InfoPanel";
 import Header from "./Header";
 import Footer from "./Footer";
+import MapFilters from "./MapFilters";
 import isValidZipcode from "../utils/validZipcode";
 import styles from "./App.scss";
 
@@ -72,14 +73,15 @@ export default class App extends PureComponent {
   toggleHeader = () => this.setState({ showHeader: !this.state.showHeader });
 
   render() {
-    const { showHeader } = this.props;
+    const { showHeader, panelOpen } = this.props;
     return (
       <div className={styles.App}>
         <div className={styles.Header} style={{ height: showHeader ? 110 : 0 }}>
-          {showHeader && <Header />}
+          {(panelOpen || showHeader) && <Header />}
         </div>
         <div className={styles.Bumper}>
           <InfoPanel />
+          <MapFilters />
           <Map
             onCountyMouseOut={this.onCountyMouseOut}
             setGeoJsonLayerRef={this.setGeoJsonLayerRef}
